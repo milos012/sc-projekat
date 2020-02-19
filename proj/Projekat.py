@@ -1,13 +1,12 @@
 import cv2
 import numpy as np
 import imutils
-import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error
 
 
 def presao(x, y ):
     eq = y - 250
     if abs(eq) <= 1:
-        # print(str(eq))
         return True
     return False
 
@@ -72,19 +71,21 @@ if __name__ == "__main__":
     video8 = "snimci/video8.mp4"
     video9 = "snimci/video9.mp4"
     video10 = "snimci/video10.mp4"
-    #obradiVideo(video1)
-    #obradiVideo(video2)
-    #obradiVideo(video3)
-    #obradiVideo(video4)
-    #obradiVideo(video5)
-    #obradiVideo(video6)
-    #obradiVideo(video7)
-    #obradiVideo(video8)
-    #obradiVideo(video9)
-    #obradiVideo(video10)
+    
     resenja = []
     resenja.append(obradiVideo(video1))
-    #resenja.append(obradiVideo(video2))
-    #resenja.append(video3)
+    resenja.append(obradiVideo(video2))
+    resenja.append(obradiVideo(video3))
+    resenja.append(obradiVideo(video4))
+    resenja.append(obradiVideo(video5))
+    resenja.append(obradiVideo(video6))
+    resenja.append(obradiVideo(video7))
+    resenja.append(obradiVideo(video8))
+    resenja.append(obradiVideo(video9))
+    resenja.append(obradiVideo(video10))
+    print("Dobijena resenja:")
     for r in resenja:
         print(r)
+    tacna = [4,24,17,23,17,27,29,22,10,23]
+    print("Tacna resenja: 4,24,17,23,17,27,29,22,10,23")
+    print("Greska:"+  str(mean_absolute_error(tacna,resenja)))
